@@ -38,7 +38,7 @@ let currentPiece = null;
 let currentX = 0;
 let currentY = 0;
 let score = 0;
-let highScore = 0;
+let highScore = Number(localStorage.getItem("highScore")) || 0;
 let gameOver = false;
 let isPaused = false;
 let dropCounter = 0;
@@ -273,6 +273,7 @@ function checkPatternMatch() {
 
         if (score > highScore) {
           highScore = score;
+          localStorage.setItem("highScore", highScore);
         }
 
         updateScore();
