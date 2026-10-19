@@ -39,6 +39,7 @@ let currentX = 0;
 let currentY = 0;
 let score = 0;
 let highScore = Number(localStorage.getItem("highScore")) || 0;
+let level = 1;
 let gameOver = false;
 let isPaused = false;
 let dropCounter = 0;
@@ -313,10 +314,11 @@ function clearPattern(startRow, startCol) {
 
 // Update score display
 function updateScore() {
+  level = Math.floor(score / 500) + 1;
   document.getElementById("score").textContent = score;
   document.getElementById("high-score").textContent = highScore;
+  document.getElementById("level").textContent = level;
 }
-
 // Handle keyboard input
 function handleKeyPress(e) {
   if (gameOver) return;
