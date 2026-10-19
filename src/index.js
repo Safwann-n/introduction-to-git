@@ -270,6 +270,11 @@ function checkPatternMatch() {
       if (matchesPattern(startRow, startCol)) {
         clearPattern(startRow, startCol);
         score += 100;
+
+        if (score > highScore) {
+          highScore = score;
+        }
+
         updateScore();
         setNewTargetPattern();
         return;
@@ -308,6 +313,7 @@ function clearPattern(startRow, startCol) {
 // Update score display
 function updateScore() {
   document.getElementById("score").textContent = score;
+  document.getElementById("high-score").textContent = highScore;
 }
 
 // Handle keyboard input
